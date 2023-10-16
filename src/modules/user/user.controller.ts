@@ -27,7 +27,21 @@ const updateAndCreate = async (req: Request, res: Response) => {
   }
 };
 
+const getUsers = async (req: Request, res: Response) => {
+  try {
+    const result = await userService.getUsers();
+    res.send({
+      success: true,
+      message: " successful",
+      data: result,
+    });
+  } catch (error) {
+    res.send(error);
+  }
+};
+
 export const userController = {
   insertDataToDb,
   updateAndCreate,
+  getUsers,
 };
