@@ -40,8 +40,22 @@ const getUsers = async (req: Request, res: Response) => {
   }
 };
 
+const getSingleUser = async (req: Request, res: Response) => {
+  try {
+    const result = await userService.getSingleUser(parseInt(req.params.id));
+    res.send({
+      success: true,
+      message: " successful",
+      data: result,
+    });
+  } catch (error) {
+    res.send(error);
+  }
+};
+
 export const userController = {
   insertDataToDb,
   updateAndCreate,
   getUsers,
+  getSingleUser,
 };
