@@ -17,7 +17,8 @@ const createPost = async (req: Request, res: Response) => {
 
 const getPosts = async (req: Request, res: Response) => {
   try {
-    const result = await postService.getPosts();
+    const options = req.query;
+    const result = await postService.getPosts(options);
     // console.log(result);
     res.send({
       success: true,
